@@ -38,7 +38,7 @@ This guide walks through the complete Play Store submission process, from develo
 ### ✅ Build signed release AAB
 
 ```bash
-cd /Users/ariyanbhakat/Three-Musketeers/apps/android
+cd apps/android
 ./gradlew bundleRelease
 
 # Output: apps/android/app/build/outputs/bundle/release/app-release.aab

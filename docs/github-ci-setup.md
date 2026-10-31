@@ -25,7 +25,7 @@ Open it and copy the **entire file contents** (already in your local clone).
 
 ### 2. Add the secret to GitHub
 
-1. Go to your GitHub repository: **Three-Musketeers**
+1. Go to your GitHub repository: **<username>/ElderCare-Guardian**
 2. Click **Settings** (top menu)
 3. In the left sidebar, click **Secrets and variables** → **Actions**
 4. Click **New repository secret** (green button)

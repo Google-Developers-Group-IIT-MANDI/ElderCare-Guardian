@@ -412,6 +412,34 @@ class SmartSuitViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    suspend fun exportClinicalPdf(context: Context): Intent {
+        return try {
+            val patientId = _selectedPatientId.value
+            val patient = withContext(Dispatchers.IO) {
+                if (patientId != null) patientDao.getById(patientId) else null
+            }
+            val recentHealth = withContext(Dispatchers.IO) {
+                if (patientId != null) healthDataDao.getRecentForPatient(patientId, 100)
+                else healthDataDao.getAll().take(100)
+            }
+            val alerts = withContext(Dispatchers.IO) {
+                alertEventDao.getAll().filter { patientId == null || it.patientId == patientId }
+            }
+            val file = withContext(Dispatchers.IO) {
+                com.eldercareguardian.data.ClinicalReportPdfExporter.exportPdf(
+                    context,
+                    patient,
+                    recentHealth,
+                    alerts,
+                )
+            }
+            com.eldercareguardian.data.ClinicalReportPdfExporter.createShareIntent(context, file)
+        } catch (e: Exception) {
+            android.util.Log.e("SmartSuitViewModel", "Clinical PDF export failed: ${e.message}", e)
+            Intent()
+        }
+    }
+
     // ── DPDPA Right to erasure — wipe all local data ──
 
     fun deleteAllData() {

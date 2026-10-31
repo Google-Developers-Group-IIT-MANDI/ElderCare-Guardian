@@ -32,6 +32,7 @@ import com.eldercareguardian.ui.components.SignalRow
 import com.eldercareguardian.ui.components.StatusPill
 import com.eldercareguardian.ui.theme.AppColors
 import com.eldercareguardian.ui.riskProgress
+import kotlinx.coroutines.launch
 
 @Composable
 fun CaregiverScreen(
@@ -41,12 +42,13 @@ fun CaregiverScreen(
     onCallCaregiver: () -> Unit,
     alertHistory: List<AlertEvent>,
     modifier: Modifier = Modifier,
+    onExportClinicalPdf: (suspend (android.content.Context) -> android.content.Intent)? = null,
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        CaregiverPanel(frame, caregiverDisplayName, caregiverPhoneNumber, onCallCaregiver, alertHistory)
+        CaregiverPanel(frame, caregiverDisplayName, caregiverPhoneNumber, onCallCaregiver, alertHistory, onExportClinicalPdf)
         DailyStatusPanel(frame)
         AlertTimeline(events = alertHistory)
     }
@@ -59,6 +61,7 @@ private fun CaregiverPanel(
     caregiverPhoneNumber: String,
     onCallCaregiver: () -> Unit,
     alertHistory: List<AlertEvent>,
+    onExportClinicalPdf: (suspend (android.content.Context) -> android.content.Intent)? = null,
 ) {
     Card(
         shape = RoundedCornerShape(10.dp),
@@ -128,6 +131,26 @@ private fun CaregiverPanel(
                     colors = ButtonDefaults.buttonColors(containerColor = AppColors.primary),
                 ) {
                     Text("Call")
+                }
+            }
+            if (onExportClinicalPdf != null) {
+                HorizontalDivider(color = AppColors.borderLight)
+                val context = androidx.compose.ui.platform.LocalContext.current
+                val scope = androidx.compose.runtime.rememberCoroutineScope()
+                Button(
+                    onClick = {
+                        scope.launch {
+                            val intent = onExportClinicalPdf(context)
+                            if (intent.resolveActivity(context.packageManager) != null) {
+                                context.startActivity(intent)
+                            }
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = AppColors.primaryDark),
+                ) {
+                    Text("Export Doctor's Summary (PDF)")
                 }
             }
         }

@@ -102,13 +102,11 @@ Android phone app
 ```
 
 Full architecture → see [`architecture.md`](./architecture.md)  
-Dev workflow → see [`workflow.md`](./workflow.md)
-
-Elder care pivot → see [`docs/elder-care-pivot.md`](./docs/elder-care-pivot.md)  
-Product roadmap → see [`docs/product-roadmap.md`](./docs/product-roadmap.md)  
-One-month showcase plan → see [`docs/showcase-plan.md`](./docs/showcase-plan.md)  
+Android development setup → see [`apps/android/README.md`](./apps/android/README.md)<br>
+ML roadmap → see [`docs/ml-roadmap.md`](./docs/ml-roadmap.md)<br>
+Deployment plan → see [`DEPLOYMENT_PLAN.md`](./DEPLOYMENT_PLAN.md)<br>
 Android app scaffold → see [`apps/android`](./apps/android)  
-Remaining work → see [`THINGS_LEFT.md`](./THINGS_LEFT.md)
+Remaining work → see [`NEXT_STEPS.md`](./NEXT_STEPS.md)
 
 ---
 

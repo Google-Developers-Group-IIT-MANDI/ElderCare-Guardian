@@ -96,6 +96,7 @@ fun SettingsScreen(
     onUpdatePatient: suspend (Patient) -> Unit = {},
     onDeletePatient: suspend (Patient) -> Unit = {},
     onExportData: suspend (Context) -> Intent = { Intent() },
+    onExportClinicalPdf: suspend (Context) -> Intent = { Intent() },
     onDeleteAllData: () -> Unit = {},
     onLoadJsonFile: () -> Unit = {},
 ) {
@@ -332,6 +333,7 @@ fun SettingsScreen(
 
             DataPrivacySection(
                 onExportData = onExportData,
+                onExportClinicalPdf = onExportClinicalPdf,
                 onDeleteAllData = onDeleteAllData,
             )
 
@@ -575,6 +577,7 @@ private fun PatientFormDialog(
 @Composable
 private fun DataPrivacySection(
     onExportData: suspend (Context) -> Intent,
+    onExportClinicalPdf: suspend (Context) -> Intent,
     onDeleteAllData: () -> Unit,
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -606,7 +609,7 @@ private fun DataPrivacySection(
             Button(
                 onClick = {
                     scope.launch {
-                        val intent = onExportData(context)
+                        val intent = onExportClinicalPdf(context)
                         if (intent.resolveActivity(context.packageManager) != null) {
                             context.startActivity(intent)
                         }
@@ -616,7 +619,23 @@ private fun DataPrivacySection(
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0F766E)),
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text("Export all data (JSON)")
+                Text("Export Doctor's Summary (PDF)")
+            }
+
+            Button(
+                onClick = {
+                    scope.launch {
+                        val intent = onExportData(context)
+                        if (intent.resolveActivity(context.packageManager) != null) {
+                            context.startActivity(intent)
+                        }
+                    }
+                },
+                shape = RoundedCornerShape(6.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF334155)),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text("Export raw telemetry (JSON)")
             }
 
             Button(

@@ -56,7 +56,7 @@ All P0 and P1 tasks are now complete in code. Remaining items are manual ops (de
 **Effort:** 2 hours
 
 ### 2. Set GitHub CI secret
-**What's needed:** Add `GOOGLE_SECRETS_JSON` to GitHub repo secrets. Content from `apps/android/app/google-services.json`.  
+**What's needed:** Add `GOOGLE_SERVICES_JSON` to GitHub repo secrets. Content from `apps/android/app/google-services.json`.<br>
 **Effort:** 5 minutes
 
 ### 3. End-to-end FCM test on real devices
@@ -109,4 +109,3 @@ Submit application at developer.samsung.com/health/data/process.html. 4–8 week
 | 13 | Dehydration study | P2 | ❌ Post-pilot | Research |
 | 14 | Custom PCB + nRF5340 | P2 | ❌ Post-pilot | Ariyan + Reman |
 | 15 | FallAllD wrist validation | P2 | ❌ Post-pilot | Ariyan |
-
