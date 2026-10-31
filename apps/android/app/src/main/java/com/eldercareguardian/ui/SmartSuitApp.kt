@@ -168,6 +168,7 @@ fun SmartSuitApp(
                     onUpdatePatient = smartSuitViewModel::updatePatient,
                     onDeletePatient = smartSuitViewModel::deletePatient,
                     onExportData = smartSuitViewModel::exportData,
+                    onExportClinicalPdf = smartSuitViewModel::exportClinicalPdf,
                     onDeleteAllData = smartSuitViewModel::deleteAllData,
                     onLoadJsonFile = onLoadJsonFile,
                 )
@@ -279,6 +280,7 @@ private fun AppShell(
     onUpdatePatient: suspend (Patient) -> Unit,
     onDeletePatient: suspend (Patient) -> Unit,
     onExportData: suspend (android.content.Context) -> android.content.Intent,
+    onExportClinicalPdf: suspend (android.content.Context) -> android.content.Intent,
     onDeleteAllData: () -> Unit,
     onLoadJsonFile: () -> Unit,
 ) {
@@ -315,6 +317,7 @@ private fun AppShell(
                 onUpdatePatient = onUpdatePatient,
                 onDeletePatient = onDeletePatient,
                 onExportData = onExportData,
+                onExportClinicalPdf = onExportClinicalPdf,
                 onDeleteAllData = onDeleteAllData,
                 retentionDays = retentionDays,
                 onRetentionDaysChanged = onRetentionDaysChanged,
@@ -389,6 +392,7 @@ private fun AppShell(
                                 caregiverPhoneNumber = caregiverPhoneNumber,
                                 onCallCaregiver = { onCallCaregiver(context) },
                                 alertHistory = alertHistory,
+                                onExportClinicalPdf = onExportClinicalPdf,
                             )
                         }
                     }
@@ -620,6 +624,7 @@ private fun AppShellVitalsPreview() {
             onUpdatePatient = {},
             onDeletePatient = {},
             onExportData = { android.content.Intent() },
+            onExportClinicalPdf = { android.content.Intent() },
             onDeleteAllData = {},
             onLoadJsonFile = {},
         )
