@@ -9,7 +9,7 @@
 
 ### Step 1: Enable GitHub Pages
 
-1. Go to your GitHub repository: **Three-Musketeers**
+1. Go to your GitHub repository: **<username>/ElderCare-Guardian**
 2. Click **Settings** (top menu)
 3. In the left sidebar, click **Pages**
 4. Under **Build and deployment**:
@@ -31,7 +31,7 @@
 2. Find the failed **Deploy ToS to GitHub Pages** run
 3. Click **Re-run jobs** → **Re-run all jobs**
 
-Expected result: ✅ Deployment succeeds, Pages available at `https://<username>.github.io/Three-Musketeers/`
+Expected result: ✅ Deployment succeeds, Pages available at `https://<username>.github.io/ElderCare-Guardian/`
 
 ---
 
@@ -52,7 +52,7 @@ If GitHub Pages continues to fail, Cloudflare Pages is a better option (already 
 1. **Go to:** https://pages.cloudflare.com
 2. **Sign in** with GitHub
 3. Click **Create a project**
-4. Select the **Three-Musketeers** repository
+4. Select the **ElderCare-Guardian** repository
 5. **Build settings:**
    - Framework preset: **None**
    - Build command: (leave empty)
@@ -60,10 +60,10 @@ If GitHub Pages continues to fail, Cloudflare Pages is a better option (already 
 6. **Environment variables:** (none needed)
 7. Click **Save and Deploy**
 
-**Result:** Your site is live at `https://three-musketeers.pages.dev` (or custom domain if you have one)
+**Result:** Your site is live at your configured Cloudflare Pages domain (or custom domain if you have one)
 
-**Privacy Policy URL:** `https://three-musketeers.pages.dev/privacy-policy/`  
-**ToS URL:** `https://three-musketeers.pages.dev/tos/`
+**Privacy Policy URL:** `https://<your-domain>/privacy-policy/`<br>
+**ToS URL:** `https://<your-domain>/tos/`
 
 ---
 
@@ -123,7 +123,7 @@ git ls-files .github/workflows/pages.yml
 Before pushing, test the Pages content locally:
 
 ```bash
-cd /Users/ariyanbhakat/Three-Musketeers
+cd /path/to/ElderCare-Guardian
 
 # Build the _site directory
 mkdir -p _site/tos _site/privacy-policy
@@ -159,7 +159,7 @@ After deployment succeeds, update the privacy policy URL in:
 
 1. **`docs/play-store-submission-guide.md`** (if you use GitHub Pages):
    ```
-   https://<username>.github.io/Three-Musketeers/privacy-policy/
+   https://<username>.github.io/ElderCare-Guardian/privacy-policy/
    ```
 
 2. **Android app** (if hardcoded):

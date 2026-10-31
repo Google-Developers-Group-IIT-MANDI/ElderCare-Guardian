@@ -2,7 +2,7 @@
 **Team:** Pranay · Ariyan · Reman Dey  
 **Version:** 1.0 | **Date:** June 2026
 
-> Current direction: elderly safety and health monitoring wearable. Older smart-suit, fabric, and energy-harvesting sections are retained as background only and are superseded by `docs/elder-care-pivot.md`.
+> Current direction: elderly safety and health monitoring wearable. Older smart-suit, fabric, and energy-harvesting sections are retained as background only; the prototype scope below is the current implementation direction.
 >
 > **Showcase scope (June 2026):** Layers 1–2 describe the full research product (TEG, solar, 3× IMU suit). The prototype builds Layers 3–5 only: ESP32-C3 + MAX30102 + MPU-6050 → BLE GATT → Android app → caregiver dashboard. Energy harvesting, multi-IMU suit integration, and AD8232 ECG are deferred.
 
